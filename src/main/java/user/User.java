@@ -1,6 +1,7 @@
 package user;
 
 import enums.UserType;
+import login.Login;
 
 public class User {
     protected Long id;
