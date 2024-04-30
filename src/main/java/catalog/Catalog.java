@@ -1,8 +1,7 @@
 package catalog;
 
-import user.User;
-
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Catalog {
@@ -11,16 +10,6 @@ public class Catalog {
     public List<Announcement> getAnnouncements() {
         return announcements;
     }
-
-    public boolean addProductSale(Announcement announcement){
-        if(announcement.getSeller() != null){
-            System.out.println("product not add in sale");
-            return false;
-        }
-        System.out.println("product add in sale");
-        return this.announcements.add(announcement);
-    }
-
     public List<Announcement> searchProductByName(String product){
         return announcements.stream()
                 .filter(x -> x.getProduct().name.equalsIgnoreCase(product))
@@ -32,4 +21,24 @@ public class Catalog {
                 .filter(x -> x.getProduct().category.equalsIgnoreCase(category))
                 .collect(Collectors.toList());
     }
+
+    public boolean addProductSale(Announcement announcement){
+        if(announcement.getSeller() == null){
+            System.out.println("product not add in sale");
+            return false;
+        }
+        System.out.println("product add in sale");
+        return this.announcements.add(announcement);
+    }
+
+    public void addingQuantity(Long id, int quantity){
+        Optional<Announcement> announcement = announcements.stream().filter( x -> x.getId().equals(id)).findFirst();
+        announcement.ifPresent(value -> value.setQuantity(value.getQuantity() + quantity));
+    }
+
+    public void removingQuantity(Long id, int quantity){
+        Optional<Announcement> announcement = announcements.stream().filter( x -> x.getId().equals(id)).findFirst();
+        announcement.ifPresent(value -> value.setQuantity(value.getQuantity() - quantity));
+    }
+
 }

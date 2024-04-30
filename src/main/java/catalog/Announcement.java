@@ -17,10 +17,6 @@ public class Announcement {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Product getProduct() {
         return product;
     }
@@ -54,7 +50,7 @@ public class Announcement {
     }
 
     public boolean isHasStockAvailable() {
-        return hasStockAvailable;
+        return quantity > 0;
     }
 
     public void setHasStockAvailable(boolean hasStockAvailable) {
@@ -75,5 +71,16 @@ public class Announcement {
 
     public void setSeller(User seller) {
         this.seller = seller;
+    }
+
+    public void purchase(){
+        if (quantity <= 0){
+            System.out.println("");
+        }
+
+    }
+
+    public void selling(){
+
     }
 }

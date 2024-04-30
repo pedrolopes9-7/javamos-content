@@ -9,7 +9,7 @@ public class User {
     protected String email;
     protected String password;
     protected UserType role;
-    protected boolean userLogged;
+    private boolean userLogged;
 
     public Long getId() {
         return id;

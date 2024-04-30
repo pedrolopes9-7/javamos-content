@@ -33,7 +33,7 @@ public class Login {
                     .filter(pass -> pass.getPassword().equals(user.getPassword()))
                     .findAny();
 
-        // User is Logged - desafio: como tornar o userLogged privado?
+        // User is Logged - desafio: como tornar o userLogged privado? jeito de modificar o setUserLogged()
         boolean userExists = users1.isPresent();
         if (userExists) {
             user.setUserLogged(true);
