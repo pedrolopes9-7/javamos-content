@@ -2,5 +2,5 @@ package enums;
 
 public enum UserType {
 
-    BUYER, SELLER
+    BUYER, SELLER, ADMIN
 }
